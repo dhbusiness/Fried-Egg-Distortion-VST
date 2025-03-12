@@ -1,0 +1,70 @@
+\hypertarget{_plugin_editor_8h_source}{}\doxysection{Plugin\+Editor.\+h}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{/*}}
+\DoxyCodeLine{2 \textcolor{comment}{  ==============================================================================}}
+\DoxyCodeLine{3 \textcolor{comment}{}}
+\DoxyCodeLine{4 \textcolor{comment}{    This file contains the basic framework code for a JUCE plugin editor.}}
+\DoxyCodeLine{5 \textcolor{comment}{}}
+\DoxyCodeLine{6 \textcolor{comment}{  ==============================================================================}}
+\DoxyCodeLine{7 \textcolor{comment}{*/}}
+\DoxyCodeLine{8 }
+\DoxyCodeLine{9 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{10 }
+\DoxyCodeLine{11 \textcolor{preprocessor}{\#include <JuceHeader.h>}}
+\DoxyCodeLine{12 \textcolor{preprocessor}{\#include "{}PluginProcessor.h"{}}}
+\DoxyCodeLine{13 \textcolor{preprocessor}{\#include "{}EggLook.h"{}}}
+\DoxyCodeLine{14 }
+\DoxyCodeLine{15 \textcolor{comment}{//==============================================================================}}
+\DoxyCodeLine{18 \textcolor{comment}{}\textcolor{keyword}{class }\mbox{\hyperlink{class_egg_saturator_audio_processor_editor}{EggSaturatorAudioProcessorEditor}}  : \textcolor{keyword}{public} juce::AudioProcessorEditor , \textcolor{keyword}{public} juce::Slider::Listener , \textcolor{keyword}{public} juce::ComboBox::Listener}
+\DoxyCodeLine{19 \{}
+\DoxyCodeLine{20 \textcolor{keyword}{public}:}
+\DoxyCodeLine{21     \mbox{\hyperlink{class_egg_saturator_audio_processor_editor}{EggSaturatorAudioProcessorEditor}} (\mbox{\hyperlink{class_egg_saturator_audio_processor}{EggSaturatorAudioProcessor}}\&);}
+\DoxyCodeLine{22     \mbox{\hyperlink{class_egg_saturator_audio_processor_editor}{\string~EggSaturatorAudioProcessorEditor}}() \textcolor{keyword}{override};}
+\DoxyCodeLine{23 }
+\DoxyCodeLine{24     \textcolor{comment}{//==============================================================================}}
+\DoxyCodeLine{25     \textcolor{keywordtype}{void} paint (juce::Graphics\&) \textcolor{keyword}{override};}
+\DoxyCodeLine{26     \textcolor{keywordtype}{void} resized() \textcolor{keyword}{override};}
+\DoxyCodeLine{27 }
+\DoxyCodeLine{28     \textcolor{keywordtype}{void} sliderValueChanged (juce::Slider* slider)\textcolor{keyword}{override};}
+\DoxyCodeLine{29     \textcolor{keywordtype}{void} comboBoxChanged (juce::ComboBox* comboBoxThatHasChanged) \textcolor{keyword}{override};}
+\DoxyCodeLine{30     }
+\DoxyCodeLine{31 \textcolor{keyword}{private}:}
+\DoxyCodeLine{32     \textcolor{comment}{// This reference is provided as a quick way for your editor to}}
+\DoxyCodeLine{33     \textcolor{comment}{// access the processor object that created it.}}
+\DoxyCodeLine{34     \mbox{\hyperlink{class_egg_saturator_audio_processor}{EggSaturatorAudioProcessor}}\& audioProcessor;}
+\DoxyCodeLine{35     }
+\DoxyCodeLine{36     }
+\DoxyCodeLine{37     juce::Image yolk;}
+\DoxyCodeLine{38     juce::Image heat;}
+\DoxyCodeLine{39     juce::Image white;}
+\DoxyCodeLine{40     juce::Image pan;}
+\DoxyCodeLine{41     juce::Image contoller;}
+\DoxyCodeLine{42     juce::Image screenGrid;}
+\DoxyCodeLine{43     juce::Image screenGreening;}
+\DoxyCodeLine{44     juce::Image screenGreenBG;}
+\DoxyCodeLine{45     juce::Image dialHousing;}
+\DoxyCodeLine{46     juce::Image dialDrive;}
+\DoxyCodeLine{47     juce::Image dialTone;}
+\DoxyCodeLine{48     juce::Image dialFeedback;}
+\DoxyCodeLine{49     juce::Image dialWetDry;}
+\DoxyCodeLine{50     }
+\DoxyCodeLine{51     }
+\DoxyCodeLine{52     \mbox{\hyperlink{class_egg_look}{EggLook}} customLook;}
+\DoxyCodeLine{53 }
+\DoxyCodeLine{54     juce::Slider wetDrySlider;}
+\DoxyCodeLine{55     juce::Slider toneSlider;}
+\DoxyCodeLine{56     juce::Slider driveSlider;}
+\DoxyCodeLine{57     juce::Slider satSlider;}
+\DoxyCodeLine{58     }
+\DoxyCodeLine{59     juce::ComboBox disModelCombo;}
+\DoxyCodeLine{60     }
+\DoxyCodeLine{61     juce::AudioProcessorValueTreeState::SliderAttachment wetDryAttachtment, toneAttachtment, driveAttachtment, satAttachtment;}
+\DoxyCodeLine{62     juce::AudioProcessorValueTreeState::ComboBoxAttachment disModelAttachtment;}
+\DoxyCodeLine{63     }
+\DoxyCodeLine{64     juce::StringArray disModels = \{ \textcolor{stringliteral}{"{}Hard"{}},\textcolor{stringliteral}{"{}Soft"{}},\textcolor{stringliteral}{"{}Saturation"{}} \};}
+\DoxyCodeLine{65 }
+\DoxyCodeLine{66     JUCE\_DECLARE\_NON\_COPYABLE\_WITH\_LEAK\_DETECTOR (\mbox{\hyperlink{class_egg_saturator_audio_processor_editor}{EggSaturatorAudioProcessorEditor}})}
+\DoxyCodeLine{67 \};}
+
+\end{DoxyCode}

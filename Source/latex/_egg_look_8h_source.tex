@@ -1,0 +1,85 @@
+\hypertarget{_egg_look_8h_source}{}\doxysection{Egg\+Look.\+h}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{/*}}
+\DoxyCodeLine{2 \textcolor{comment}{  ==============================================================================}}
+\DoxyCodeLine{3 \textcolor{comment}{}}
+\DoxyCodeLine{4 \textcolor{comment}{    EggLook.h}}
+\DoxyCodeLine{5 \textcolor{comment}{    Created: 21 Nov 2022 1:07:53pm}}
+\DoxyCodeLine{6 \textcolor{comment}{    Author:  Davis Hvostovs}}
+\DoxyCodeLine{7 \textcolor{comment}{}}
+\DoxyCodeLine{8 \textcolor{comment}{  ==============================================================================}}
+\DoxyCodeLine{9 \textcolor{comment}{*/}}
+\DoxyCodeLine{10 }
+\DoxyCodeLine{11 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{12 \textcolor{preprocessor}{\#include <JuceHeader.h>}}
+\DoxyCodeLine{13 }
+\DoxyCodeLine{14 }
+\DoxyCodeLine{15 \textcolor{keyword}{class }\mbox{\hyperlink{class_egg_look}{EggLook}} : \textcolor{keyword}{public} juce::LookAndFeel\_V4}
+\DoxyCodeLine{16 \{}
+\DoxyCodeLine{17     }
+\DoxyCodeLine{18     }
+\DoxyCodeLine{19 \textcolor{keyword}{public}:}
+\DoxyCodeLine{20     }
+\DoxyCodeLine{21     \textcolor{keywordtype}{void} drawRotarySlider (juce::Graphics\& g, \textcolor{keywordtype}{int} x, \textcolor{keywordtype}{int} y, \textcolor{keywordtype}{int} width, \textcolor{keywordtype}{int} height, \textcolor{keywordtype}{float} sliderPos,}
+\DoxyCodeLine{22                                            \textcolor{keyword}{const} \textcolor{keywordtype}{float} rotaryStartAngle, \textcolor{keyword}{const} \textcolor{keywordtype}{float} rotaryEndAngle, juce::Slider\& slider)}
+\DoxyCodeLine{23     \{}
+\DoxyCodeLine{24         }
+\DoxyCodeLine{25 }
+\DoxyCodeLine{26         }
+\DoxyCodeLine{27         \textcolor{keyword}{auto} outline = slider.findColour (juce::Slider::rotarySliderOutlineColourId);}
+\DoxyCodeLine{28         \textcolor{keyword}{auto} fill    = slider.findColour (juce::Slider::rotarySliderFillColourId);}
+\DoxyCodeLine{29       \textcolor{comment}{//  auto thumb = slider.findColour   (juce::Slider::thumbColourId);}}
+\DoxyCodeLine{30 }
+\DoxyCodeLine{31         \textcolor{keyword}{auto} bounds = juce::Rectangle<int> (x, y, width, height).toFloat().reduced (10);}
+\DoxyCodeLine{32 }
+\DoxyCodeLine{33         \textcolor{keyword}{auto} radius = juce::jmin (bounds.getWidth(), bounds.getHeight()) / 2.0f;}
+\DoxyCodeLine{34         \textcolor{keyword}{auto} toAngle = rotaryStartAngle + sliderPos * (rotaryEndAngle -\/ rotaryStartAngle);}
+\DoxyCodeLine{35         \textcolor{keyword}{auto} lineW = juce::jmin (8.0f, radius * 0.5f);}
+\DoxyCodeLine{36         \textcolor{keyword}{auto} arcRadius = radius -\/ lineW * 0.5f;}
+\DoxyCodeLine{37 }
+\DoxyCodeLine{38         juce::Path backgroundArc;}
+\DoxyCodeLine{39         backgroundArc.addCentredArc (bounds.getCentreX(),}
+\DoxyCodeLine{40                                      bounds.getCentreY(),}
+\DoxyCodeLine{41                                      arcRadius,}
+\DoxyCodeLine{42                                      arcRadius,}
+\DoxyCodeLine{43                                      0.0f,}
+\DoxyCodeLine{44                                      rotaryStartAngle,}
+\DoxyCodeLine{45                                      rotaryEndAngle,}
+\DoxyCodeLine{46                                      \textcolor{keyword}{true});}
+\DoxyCodeLine{47 }
+\DoxyCodeLine{48         g.setColour (outline);}
+\DoxyCodeLine{49         g.strokePath (backgroundArc, juce::PathStrokeType (lineW, juce::PathStrokeType::curved, juce::PathStrokeType::rounded));}
+\DoxyCodeLine{50 }
+\DoxyCodeLine{51         g.setColour(slider.findColour (juce::Slider::backgroundColourId));}
+\DoxyCodeLine{52         g.fillEllipse(x, y, width, height);}
+\DoxyCodeLine{53         }
+\DoxyCodeLine{54         }
+\DoxyCodeLine{55         \textcolor{keywordflow}{if} (slider.isEnabled())}
+\DoxyCodeLine{56         \{}
+\DoxyCodeLine{57             juce::Path valueArc;}
+\DoxyCodeLine{58             valueArc.addCentredArc (bounds.getCentreX(),}
+\DoxyCodeLine{59                                     bounds.getCentreY(),}
+\DoxyCodeLine{60                                     arcRadius,}
+\DoxyCodeLine{61                                     arcRadius,}
+\DoxyCodeLine{62                                     0.0f,}
+\DoxyCodeLine{63                                     rotaryStartAngle,}
+\DoxyCodeLine{64                                     toAngle,}
+\DoxyCodeLine{65                                     \textcolor{keyword}{true});}
+\DoxyCodeLine{66 }
+\DoxyCodeLine{67             g.setColour (fill);}
+\DoxyCodeLine{68             g.strokePath (valueArc, juce::PathStrokeType (lineW, juce::PathStrokeType::curved, juce::PathStrokeType::rounded));}
+\DoxyCodeLine{69         \}}
+\DoxyCodeLine{70 }
+\DoxyCodeLine{71         \textcolor{keyword}{auto} thumbWidth = lineW * 1.5f;}
+\DoxyCodeLine{72         juce::Point<float> thumbPoint (bounds.getCentreX() + arcRadius * std::cos (toAngle -\/ juce::MathConstants<float>::halfPi),}
+\DoxyCodeLine{73                                  bounds.getCentreY() + arcRadius * std::sin (toAngle -\/ juce::MathConstants<float>::halfPi));}
+\DoxyCodeLine{74 }
+\DoxyCodeLine{75         g.setColour (slider.findColour (juce::Slider::thumbColourId));}
+\DoxyCodeLine{76         g.fillEllipse (juce::Rectangle<float> (thumbWidth, thumbWidth).withCentre (thumbPoint));}
+\DoxyCodeLine{77     \}}
+\DoxyCodeLine{78     }
+\DoxyCodeLine{79     }
+\DoxyCodeLine{80 \};}
+
+\end{DoxyCode}

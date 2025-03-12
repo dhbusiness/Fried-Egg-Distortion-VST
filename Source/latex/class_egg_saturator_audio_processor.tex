@@ -1,0 +1,77 @@
+\hypertarget{class_egg_saturator_audio_processor}{}\doxysection{Egg\+Saturator\+Audio\+Processor Class Reference}
+\label{class_egg_saturator_audio_processor}\index{EggSaturatorAudioProcessor@{EggSaturatorAudioProcessor}}
+Inheritance diagram for Egg\+Saturator\+Audio\+Processor\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_egg_saturator_audio_processor}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_egg_saturator_audio_processor_adebb007e1c33b02b51fe14dc25075c65}\label{class_egg_saturator_audio_processor_adebb007e1c33b02b51fe14dc25075c65}} 
+void {\bfseries prepare\+To\+Play} (double sample\+Rate, int samples\+Per\+Block) override
+\item 
+\mbox{\Hypertarget{class_egg_saturator_audio_processor_a38426a17ab640c20f313b8f657ab9eb0}\label{class_egg_saturator_audio_processor_a38426a17ab640c20f313b8f657ab9eb0}} 
+void {\bfseries release\+Resources} () override
+\item 
+\mbox{\Hypertarget{class_egg_saturator_audio_processor_ada80198742f51468429ecdd0fbe13570}\label{class_egg_saturator_audio_processor_ada80198742f51468429ecdd0fbe13570}} 
+bool {\bfseries is\+Buses\+Layout\+Supported} (const Buses\+Layout \&layouts) const override
+\item 
+\mbox{\Hypertarget{class_egg_saturator_audio_processor_a5b61def715090b2345b7d19f43d172d6}\label{class_egg_saturator_audio_processor_a5b61def715090b2345b7d19f43d172d6}} 
+void {\bfseries process\+Block} (juce\+::\+Audio\+Buffer$<$ float $>$ \&, juce\+::\+Midi\+Buffer \&) override
+\item 
+\mbox{\Hypertarget{class_egg_saturator_audio_processor_a3ec2c837f8b5162c02038e4315c52a08}\label{class_egg_saturator_audio_processor_a3ec2c837f8b5162c02038e4315c52a08}} 
+juce\+::\+Audio\+Processor\+Editor $\ast$ {\bfseries create\+Editor} () override
+\item 
+\mbox{\Hypertarget{class_egg_saturator_audio_processor_a09286e0afd527662469a5c81023241c6}\label{class_egg_saturator_audio_processor_a09286e0afd527662469a5c81023241c6}} 
+bool {\bfseries has\+Editor} () const override
+\item 
+\mbox{\Hypertarget{class_egg_saturator_audio_processor_a81607910830a5a9e0104c70ed38259e2}\label{class_egg_saturator_audio_processor_a81607910830a5a9e0104c70ed38259e2}} 
+const juce\+::\+String {\bfseries get\+Name} () const override
+\item 
+\mbox{\Hypertarget{class_egg_saturator_audio_processor_acf07d4b566877b5a3089e3ce6fd467e7}\label{class_egg_saturator_audio_processor_acf07d4b566877b5a3089e3ce6fd467e7}} 
+bool {\bfseries accepts\+Midi} () const override
+\item 
+\mbox{\Hypertarget{class_egg_saturator_audio_processor_ac97596c7bf2093d26f6eed79e9b2c1b2}\label{class_egg_saturator_audio_processor_ac97596c7bf2093d26f6eed79e9b2c1b2}} 
+bool {\bfseries produces\+Midi} () const override
+\item 
+\mbox{\Hypertarget{class_egg_saturator_audio_processor_aa57c51bf4bf5c916815aac699a420359}\label{class_egg_saturator_audio_processor_aa57c51bf4bf5c916815aac699a420359}} 
+bool {\bfseries is\+Midi\+Effect} () const override
+\item 
+\mbox{\Hypertarget{class_egg_saturator_audio_processor_a5aa25b16a5f4270bdde99b67b4478bfb}\label{class_egg_saturator_audio_processor_a5aa25b16a5f4270bdde99b67b4478bfb}} 
+double {\bfseries get\+Tail\+Length\+Seconds} () const override
+\item 
+\mbox{\Hypertarget{class_egg_saturator_audio_processor_af9edb26474483b9a1155cb33ec9d25f2}\label{class_egg_saturator_audio_processor_af9edb26474483b9a1155cb33ec9d25f2}} 
+int {\bfseries get\+Num\+Programs} () override
+\item 
+\mbox{\Hypertarget{class_egg_saturator_audio_processor_a612262da67c60b408465e307d573cc85}\label{class_egg_saturator_audio_processor_a612262da67c60b408465e307d573cc85}} 
+int {\bfseries get\+Current\+Program} () override
+\item 
+\mbox{\Hypertarget{class_egg_saturator_audio_processor_a75b2f08d03f1535fa0457c178d9a230b}\label{class_egg_saturator_audio_processor_a75b2f08d03f1535fa0457c178d9a230b}} 
+void {\bfseries set\+Current\+Program} (int index) override
+\item 
+\mbox{\Hypertarget{class_egg_saturator_audio_processor_ac132a26107212a3e4b570f8a487c7f70}\label{class_egg_saturator_audio_processor_ac132a26107212a3e4b570f8a487c7f70}} 
+const juce\+::\+String {\bfseries get\+Program\+Name} (int index) override
+\item 
+\mbox{\Hypertarget{class_egg_saturator_audio_processor_a29924591ad90035687fc3a2a87058df6}\label{class_egg_saturator_audio_processor_a29924591ad90035687fc3a2a87058df6}} 
+void {\bfseries change\+Program\+Name} (int index, const juce\+::\+String \&new\+Name) override
+\item 
+\mbox{\Hypertarget{class_egg_saturator_audio_processor_ad1ba9d46ae7e2d0e1f17bfd70f1f5383}\label{class_egg_saturator_audio_processor_ad1ba9d46ae7e2d0e1f17bfd70f1f5383}} 
+void {\bfseries get\+State\+Information} (juce\+::\+Memory\+Block \&dest\+Data) override
+\item 
+\mbox{\Hypertarget{class_egg_saturator_audio_processor_a51891593ae72f0f8609745f7a566f2ef}\label{class_egg_saturator_audio_processor_a51891593ae72f0f8609745f7a566f2ef}} 
+void {\bfseries set\+State\+Information} (const void $\ast$data, int size\+In\+Bytes) override
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_egg_saturator_audio_processor_a64957b624cdb8781de71260c19412f0b}\label{class_egg_saturator_audio_processor_a64957b624cdb8781de71260c19412f0b}} 
+juce\+::\+Audio\+Processor\+Value\+Tree\+State {\bfseries \+\_\+tree\+State}
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Plugin\+Processor.\+h\item 
+Plugin\+Processor.\+cpp\end{DoxyCompactItemize}

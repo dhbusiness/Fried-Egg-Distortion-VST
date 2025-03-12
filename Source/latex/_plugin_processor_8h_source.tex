@@ -1,0 +1,86 @@
+\hypertarget{_plugin_processor_8h_source}{}\doxysection{Plugin\+Processor.\+h}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{/*}}
+\DoxyCodeLine{2 \textcolor{comment}{  ==============================================================================}}
+\DoxyCodeLine{3 \textcolor{comment}{}}
+\DoxyCodeLine{4 \textcolor{comment}{    This file contains the basic framework code for a JUCE plugin processor.}}
+\DoxyCodeLine{5 \textcolor{comment}{}}
+\DoxyCodeLine{6 \textcolor{comment}{  ==============================================================================}}
+\DoxyCodeLine{7 \textcolor{comment}{*/}}
+\DoxyCodeLine{8 }
+\DoxyCodeLine{9 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{10 }
+\DoxyCodeLine{11 \textcolor{preprocessor}{\#include <JuceHeader.h>}}
+\DoxyCodeLine{12 \textcolor{preprocessor}{\#include "{}DSP/Distortion.h"{}}}
+\DoxyCodeLine{13 \textcolor{preprocessor}{\#include "{}Parameters/Parameters.h"{}}}
+\DoxyCodeLine{14 \textcolor{preprocessor}{\#include "{}DSP/Delay.h"{}}}
+\DoxyCodeLine{15 }
+\DoxyCodeLine{16 \textcolor{comment}{//==============================================================================}}
+\DoxyCodeLine{19 \textcolor{comment}{}\textcolor{keyword}{class }\mbox{\hyperlink{class_egg_saturator_audio_processor}{EggSaturatorAudioProcessor}}  : \textcolor{keyword}{public} juce::AudioProcessor, juce::AudioProcessorValueTreeState::Listener}
+\DoxyCodeLine{20 \textcolor{preprocessor}{                            \#if JucePlugin\_Enable\_ARA}}
+\DoxyCodeLine{21                              , \textcolor{keyword}{public} juce::AudioProcessorARAExtension}
+\DoxyCodeLine{22 \textcolor{preprocessor}{                            \#endif}}
+\DoxyCodeLine{23 \{}
+\DoxyCodeLine{24 \textcolor{keyword}{public}:}
+\DoxyCodeLine{25     \textcolor{comment}{//==============================================================================}}
+\DoxyCodeLine{26     \mbox{\hyperlink{class_egg_saturator_audio_processor}{EggSaturatorAudioProcessor}}();}
+\DoxyCodeLine{27     \mbox{\hyperlink{class_egg_saturator_audio_processor}{\string~EggSaturatorAudioProcessor}}() \textcolor{keyword}{override};}
+\DoxyCodeLine{28 }
+\DoxyCodeLine{29     \textcolor{comment}{//==============================================================================}}
+\DoxyCodeLine{30     \textcolor{keywordtype}{void} prepareToPlay (\textcolor{keywordtype}{double} sampleRate, \textcolor{keywordtype}{int} samplesPerBlock) \textcolor{keyword}{override};}
+\DoxyCodeLine{31     \textcolor{keywordtype}{void} releaseResources() \textcolor{keyword}{override};}
+\DoxyCodeLine{32 }
+\DoxyCodeLine{33 \textcolor{preprocessor}{   \#ifndef JucePlugin\_PreferredChannelConfigurations}}
+\DoxyCodeLine{34     \textcolor{keywordtype}{bool} isBusesLayoutSupported (\textcolor{keyword}{const} BusesLayout\& layouts) \textcolor{keyword}{const override};}
+\DoxyCodeLine{35 \textcolor{preprocessor}{   \#endif}}
+\DoxyCodeLine{36 }
+\DoxyCodeLine{37     \textcolor{keywordtype}{void} processBlock (juce::AudioBuffer<float>\&, juce::MidiBuffer\&) \textcolor{keyword}{override};}
+\DoxyCodeLine{38 }
+\DoxyCodeLine{39     \textcolor{comment}{//==============================================================================}}
+\DoxyCodeLine{40     juce::AudioProcessorEditor* createEditor() \textcolor{keyword}{override};}
+\DoxyCodeLine{41     \textcolor{keywordtype}{bool} hasEditor() \textcolor{keyword}{const override};}
+\DoxyCodeLine{42 }
+\DoxyCodeLine{43     \textcolor{comment}{//==============================================================================}}
+\DoxyCodeLine{44     \textcolor{keyword}{const} juce::String getName() \textcolor{keyword}{const override};}
+\DoxyCodeLine{45 }
+\DoxyCodeLine{46     \textcolor{keywordtype}{bool} acceptsMidi() \textcolor{keyword}{const override};}
+\DoxyCodeLine{47     \textcolor{keywordtype}{bool} producesMidi() \textcolor{keyword}{const override};}
+\DoxyCodeLine{48     \textcolor{keywordtype}{bool} isMidiEffect() \textcolor{keyword}{const override};}
+\DoxyCodeLine{49     \textcolor{keywordtype}{double} getTailLengthSeconds() \textcolor{keyword}{const override};}
+\DoxyCodeLine{50 }
+\DoxyCodeLine{51     \textcolor{comment}{//==============================================================================}}
+\DoxyCodeLine{52     \textcolor{keywordtype}{int} getNumPrograms() \textcolor{keyword}{override};}
+\DoxyCodeLine{53     \textcolor{keywordtype}{int} getCurrentProgram() \textcolor{keyword}{override};}
+\DoxyCodeLine{54     \textcolor{keywordtype}{void} setCurrentProgram (\textcolor{keywordtype}{int} index) \textcolor{keyword}{override};}
+\DoxyCodeLine{55     \textcolor{keyword}{const} juce::String getProgramName (\textcolor{keywordtype}{int} index) \textcolor{keyword}{override};}
+\DoxyCodeLine{56     \textcolor{keywordtype}{void} changeProgramName (\textcolor{keywordtype}{int} index, \textcolor{keyword}{const} juce::String\& newName) \textcolor{keyword}{override};}
+\DoxyCodeLine{57 }
+\DoxyCodeLine{58     \textcolor{comment}{//==============================================================================}}
+\DoxyCodeLine{59     \textcolor{keywordtype}{void} getStateInformation (juce::MemoryBlock\& destData) \textcolor{keyword}{override};}
+\DoxyCodeLine{60     \textcolor{keywordtype}{void} setStateInformation (\textcolor{keyword}{const} \textcolor{keywordtype}{void}* data, \textcolor{keywordtype}{int} sizeInBytes) \textcolor{keyword}{override};}
+\DoxyCodeLine{61 }
+\DoxyCodeLine{62     juce::AudioProcessorValueTreeState \_treeState;}
+\DoxyCodeLine{63 }
+\DoxyCodeLine{64 }
+\DoxyCodeLine{65 }
+\DoxyCodeLine{66 \textcolor{keyword}{private}:}
+\DoxyCodeLine{67 }
+\DoxyCodeLine{68     juce::AudioProcessorValueTreeState::ParameterLayout createParameterLayout();}
+\DoxyCodeLine{69     \textcolor{keywordtype}{void} parameterChanged(\textcolor{keyword}{const} juce::String\& parameterID, \textcolor{keywordtype}{float} newValue) \textcolor{keyword}{override};}
+\DoxyCodeLine{70     \textcolor{keywordtype}{void} updateParameters();}
+\DoxyCodeLine{71     }
+\DoxyCodeLine{72     juce::dsp::LadderFilter<float> \_toneFilter;}
+\DoxyCodeLine{73 }
+\DoxyCodeLine{74     Distortion<float> \_distortionModule;}
+\DoxyCodeLine{75     \textcolor{comment}{//std::atomic<float>* feedbackValue;}}
+\DoxyCodeLine{76     }
+\DoxyCodeLine{77     \textcolor{comment}{//DELAY STUFF BELOW}}
+\DoxyCodeLine{78 \textcolor{comment}{//    juce::AudioProcessorValueTreeState pluginState;}}
+\DoxyCodeLine{79    \textcolor{comment}{// DelayUnit leftDelay,rightDelay;}}
+\DoxyCodeLine{80     \textcolor{keywordtype}{double} currentSampleRate;}
+\DoxyCodeLine{81     \textcolor{comment}{//==============================================================================}}
+\DoxyCodeLine{82     JUCE\_DECLARE\_NON\_COPYABLE\_WITH\_LEAK\_DETECTOR (\mbox{\hyperlink{class_egg_saturator_audio_processor}{EggSaturatorAudioProcessor}})}
+\DoxyCodeLine{83 \};}
+
+\end{DoxyCode}
